@@ -1,21 +1,21 @@
-.wrapper{
+.wrapper {
     display: flex;
     height: 100vh;
     flex-direction: column;
 }
 
-.main{
+.main {
     flex: 1;
 }
 
-.hero-body{
+.hero-body {
     padding: 1rem;
 }
 
-section{
+section {
     padding: 1.5rem;
 }
 
-#output{
+#output {
     padding: 1rem 0;
 }

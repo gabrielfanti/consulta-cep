@@ -22,25 +22,25 @@ function getZipcode(event) {
     }
 
     fetch(`https://viacep.com.br/ws/${$zipcode.value}/json/`)
-    .then(response => {
-        loading('off');
+        .then(response => {
+            loading('off');
 
-        if(response.status != 200){
-            $output.innerHTML = showMessage(msg.zipcode_error, 'is-danger');
-            $zipcode.focus();
-            throw Error(response.status)
-        } else {
-            return response.json();
-        }
-    })
+            if (response.status != 200) {
+                $output.innerHTML = showMessage(msg.zipcode_error, 'is-danger');
+                $zipcode.focus();
+                throw Error(response.status)
+            } else {
+                return response.json();
+            }
+        })
 
-    .then(data => {
-        loading('off');
-        if(data.erro){
-            $output.innerHTML = showMessage(msg.zipcode_notfounde, 'is-warning');
-            $zipcode.focus();
-        } else {
-            const message = `
+        .then(data => {
+            loading('off');
+            if (data.erro) {
+                $output.innerHTML = showMessage(msg.zipcode_notfounde, 'is-warning');
+                $zipcode.focus();
+            } else {
+                const message = `
             <ul>
                 <li><strong>Endereço: </strong>${data.logradouro}<li>
                 <li><strong>Complemento: </strong>${data.complemento}<li>
@@ -49,10 +49,10 @@ function getZipcode(event) {
                 <li><strong>Estado: </strong>${data.uf}<li>  
             </ul>  
             `;
-            $output.innerHTML = showMessage(message)
-        }
-    })
-    .catch(err => console.log(err))
+                $output.innerHTML = showMessage(message)
+            }
+        })
+        .catch(err => console.log(err))
 }
 
 function zipcodeValidation(value) {
@@ -68,7 +68,7 @@ function loading(status) {
     `
 }
 
-function showMessage(message, typeMessage = " "){
+function showMessage(message, typeMessage = " ") {
     return `
         <article class="message ${typeMessage}">
             <div class="message-header">
